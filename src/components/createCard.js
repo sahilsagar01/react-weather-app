@@ -1,57 +1,50 @@
 import { useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import WeatherCard from './weatherCard';
 import axios from 'axios';
 
 
 function CreatCard() {
-  const [collectedCard , setCollectedCard] = useState([])
-  const [newInput, setNewInput] = useState({
-    temperature: "",
-    weatherth: "",
-    windSpeed: "",
-    humidity: "",
-    country: "",
-    city: ""
-  })
+  const [collectedCard , setCollectedCard] = useState([]);
+// const handleChange = (e) => {
+//   const {name, value} = e.target;
+//   setNewInput(pV => {
+//     return {
+//       ...pV,
+//       [name]: value
+//     }
+//   })
+// }
+  // const [validated, setValidated] = useState(false);
 
-const handleChange = (e) => {
-  const {name, value} = e.target;
-  setNewInput(pV => {
-    return {
-      ...pV,
-      [name]: value
-    }
-  })
-}
-  const [validated, setValidated] = useState(false);
-
-  const handleSubmit = (event) => {
-
+const handledelete = async (mongoId,id) => {
+  try{
     setCollectedCard(pV => {
-      return [...pV, newInput]
+      return pV.filter((item, index) => {
+        return index !== id
+      })
     })
-      event.preventDefault();
-  };
-const handledelete = async(id) => {
-  setCollectedCard(pV => {
-    return pV.filter((item, index) => {
-      return index !== id
-    })
-  })
+  }
+  catch(error){
+    console.log(error)
+  }
+  
 }
 useEffect(() => {
   const fetchInfo = async () => {
       try {
         const api = "http://localhost:5004/card";
-
         const weatherInfo = await axios.get(api);
-        console.log("file: App.js:25  weatherInfo: ", weatherInfo.data)
+        console.log("file: createcard.js:59  weatherInfo: ", weatherInfo.data)
        setCollectedCard(weatherInfo.data)
+      //  setNewInput({
+      //   temperature: ,
+      //   weatherth: "",
+      //   windSpeed: "",
+      //   humidity: "",
+      //   country: "",
+      //   city: ""
+      //  })
       } catch (error) {
         console.error(error);
       }
@@ -60,7 +53,8 @@ useEffect(() => {
 },[])
 
   return ( <div>
-     <Form noValidate validated={validated} onSubmit={handleSubmit}>
+  
+     {/* <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Row className="mb-3">
         <Form.Group as={Col} md="4" controlId="validationCustom01">
           <Form.Label>Temprature</Form.Label>
@@ -128,7 +122,8 @@ useEffect(() => {
       <Form.Group className="mb-3">
       </Form.Group>
       <Button type="submit">Submit form</Button>
-    </Form>
+    </Form> */}
+    <Row>
     {collectedCard.map((item,i) =>{
       return <WeatherCard 
       key={i}
@@ -139,9 +134,11 @@ useEffect(() => {
         humidity={item.humidity}
         city={item.city}
         country={item.country}
+        image={item.image}
         ondelete={handledelete}
       />
     })}
+    </Row>
   </div>
   );
 }

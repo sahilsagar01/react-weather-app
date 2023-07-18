@@ -11,10 +11,15 @@ export default function WeatherCard(props) {
 
 
 const handleDelete = async() => {
+ try{
   const weatherData = await axios.get("http://localhost:5004/card");
-  console.log(weatherData.data)
-
-  props.ondelete(props.id)
+  const mongoId = weatherData.data[props.id]._id
+  props.ondelete(mongoId,props.id)
+  const DeletedCard = await axios.delete(`http://localhost:5004/card/delete/${mongoId}`);
+ }
+ catch(error){
+  console.log(error)
+ }
 }
 
 
@@ -22,7 +27,7 @@ const handleDelete = async() => {
     <Card sx={{ maxWidth: 250 }}>
       <CardMedia
         sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
+        image={props.image}
         title="green iguana"
       />
       <CardContent>
@@ -30,16 +35,16 @@ const handleDelete = async() => {
           {props.city} ({props.country})
         </Typography>
         <Typography variant="body2" color="text.secondary">
-         Temperature: {props.temperature}
+         Temperature: {props.temperature} °C
         </Typography>
         <Typography variant="body2" color="text.secondary">
          Weather: {props.weather}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-         Wind speed: {props.windSpeed}
+         Wind speed: {props.windSpeed} km/h
         </Typography>
         <Typography variant="body2" color="text.secondary">
-         Humidity: {props.humidity}
+         Humidity: {props.humidity}%
         </Typography>
       </CardContent>
       <CardActions>

@@ -90,7 +90,11 @@
 .facH{
     margin: 4rem auto;
 }
-/* bigCard////////////// */
+/* Cards////////////// */
 .bigCard{
-    margin: 3rem 2rem 2rem 2rem;
+    justify-content: center;
+    margin: 2rem auto;
+}
+.smallCard{
+    gap: .5rem;
 }

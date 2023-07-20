@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
 import WeatherCard from './weatherCard';
 import axios from 'axios';
 
 
-function CreatCard() {
-  const [collectedCard , setCollectedCard] = useState([]);
+function CreatCard(props) {
+  const {collectedCard, setCollectedCard} = props;
 // const handleChange = (e) => {
 //   const {name, value} = e.target;
 //   setNewInput(pV => {
 //     return {
-//       ...pV,
+//       ...pV, 
 //       [name]: value
 //     }
 //   })
@@ -123,7 +123,7 @@ useEffect(() => {
       </Form.Group>
       <Button type="submit">Submit form</Button>
     </Form> */}
-    <Row>
+    <Row className='smallCard'>
     {collectedCard.map((item,i) =>{
       return <WeatherCard 
       key={i}
@@ -135,6 +135,7 @@ useEffect(() => {
         city={item.city}
         country={item.country}
         image={item.image}
+        time={item.createdAt}
         ondelete={handledelete}
       />
     })}

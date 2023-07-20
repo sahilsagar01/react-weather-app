@@ -11,7 +11,7 @@ function Footer(){
         <span> || </span>
         <a class="cl" href="">Internshala</a>
         <span> || </span>
-        <a class="cL" href="">Github</a>
+        <a class="cL" href="https://github.com/sahilsagar01">Github</a>
         </div>
         </div>
         </div>

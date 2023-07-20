@@ -3,7 +3,7 @@ import axios from "axios";
 import BigCard from "./bigCard";
 
 
-function Search(){
+function Search(props){
     const [value, setValue] = useState("");
     const [weather, setWeather] = useState("");
     const [weatherData, setWeatherData] = useState({
@@ -15,6 +15,10 @@ function Search(){
         city: "",
         image: ""
     })
+    const {collectedCard, setCollectedCard} = props;
+
+
+
     const handleChange = (e) =>{
         const input = e.target.value;
         setValue(input)
@@ -31,6 +35,9 @@ const saveCard = async () => {
              city: weatherData.city,
              image: weatherData.image
         })
+        setCollectedCard([...collectedCard,postCard.data]);
+        setWeather("")
+        setValue("")
         console.log(postCard)
     }
     catch(err){
@@ -91,8 +98,8 @@ useEffect(() => {
         <h1>Search Your City Weather Here.</h1>
         <form onClick={handleClick}>
             <div className="searchArea">
-            <h1>{weather}</h1>
-             <input onChange={handleChange} className="search-box" type="text" placeholder="Search city"></input>
+            <h3>City: {weather}</h3>
+             <input onChange={handleChange} className="search-box" type="text" placeholder="Search city or country"  value={value} ></input>
             <input className="search-btn" type="submit" value="check" ></input>
             </div>
         </form>

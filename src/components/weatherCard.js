@@ -1,10 +1,12 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
+import DeleteIcon from '@mui/icons-material/Delete';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
 import axios from 'axios';
 
 export default function WeatherCard(props) {
@@ -26,9 +28,9 @@ const handleDelete = async() => {
   return (
     <Card sx={{ maxWidth: 250 }}>
       <CardMedia
-        sx={{ height: 140 }}
+        sx={{ height: 150 }}
         image={props.image}
-        title="green iguana"
+        title="weather img"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -46,10 +48,18 @@ const handleDelete = async() => {
         <Typography variant="body2" color="text.secondary">
          Humidity: {props.humidity}%
         </Typography>
+        <Typography variant="body2" color="text.secondary">
+         Date & Time: {props.time}
+        </Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={handleDelete} type='button' size="small">Delete</Button>
+        <Button onClick={handleDelete} type='button' size="small">
+        <Tooltip title="Delete">
+         <DeleteIcon color="warning" />
+         </Tooltip>
+        </Button>
       </CardActions>
     </Card>
+    
   );
 }

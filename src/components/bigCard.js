@@ -1,10 +1,13 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
+import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
 import Row from 'react-bootstrap/esm/Row';
 
 export default function BigCard(props) {
@@ -12,11 +15,10 @@ export default function BigCard(props) {
         props.onSave();
     }
   return ( 
-  <Row>
-    <div className='bigCard'>
+  <Row className='bigCard'>
     <Card sx={{ maxWidth: 345 }}>
     <CardMedia
-      sx={{ height: 140 }}
+      sx={{ height: 200 }}
       image={props.image}
       title="green iguana"
     />
@@ -38,10 +40,15 @@ export default function BigCard(props) {
       </Typography>
     </CardContent>
     <CardActions>
-      <Button onClick={handlepost} type='button' size="small">Save</Button>
+      <Button onClick={handlepost} type='button' size="small">
+      <Tooltip title="Save">
+         <IconButton>
+         <BookmarksIcon color='action' />
+         </IconButton>
+         </Tooltip>
+      </Button>
     </CardActions>
   </Card>
-  </div>
   </Row>
   );
 }

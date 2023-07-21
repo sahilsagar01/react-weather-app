@@ -13,15 +13,15 @@ function ContactInfo(){
        <div>
        <h1>Hello,</h1>
        <p>I am a full-stack web developer with a solution-driven web
-approach and am adept at contributing to a highly collaborative work
-environment and finding solutions. Proven experience developing
-consumer-focused websites using HTML, CSS, and JavaScript, Node Express and React. Good
-knowledge of the best practices for web design, user experience.</p>
+        approach and am adept at contributing to a highly collaborative work
+        environment and finding solutions. Proven experience developing
+        consumer-focused websites using HTML, CSS, and JavaScript, Node Express and React. Good
+        knowledge of the best practices for web design, user experience.</p>
        </div>
       <div class="info">
-        <p><strong>Post address:</strong> abcd abcdef abcde abcd abcdefghi ab.</p>
-        <p><strong>Gmail:</strong> sa****@**gamil.com</p>
-        <p><strong>Pho:</strong>  9*******65</p>
+        <p><strong>Post address:</strong> Mithla colony, Danapur, Patna, Bihar 800013</p>
+        <p><strong>Gmail:</strong> sagarsahil520@gmail.com</p>
+        <p><strong>Pho:</strong>  9801303266</p>
       </div>
        <div>
         <div class="proIcon">

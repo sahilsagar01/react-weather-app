@@ -7,10 +7,10 @@ function About(){
         <Header />
         <section id="about">
     <div class="about">
-        <h1 class="pageHeading">About </h1>
-        <p class="aboutI">Weather today is a weather forcast app, it is here for helping you to finding your local weather very easily. </p>
+        <h1 class="pageHeading">About</h1>
+        <p class="aboutI">Weather today is a weather forcast app, it is here for helping you to finding your local weather very easily for free. </p>
        <div className="facH">
-       <h2>we are providing you</h2>
+       <h2>we are providing you.</h2>
         <div class="fac">
             <h5>Temperature:- </h5><p>You can get your local temperature by one click.</p>
             <h5>Weather:- </h5><p>You can find your local weather before any of your plans.</p>

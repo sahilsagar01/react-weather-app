@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import axios from "axios";
 import BigCard from "./bigCard";
+import { Typography } from "@mui/material";
 
 
 function Search(props){
@@ -25,7 +26,7 @@ function Search(props){
     }
 const saveCard = async () => {
     try{
-        const api = "http://localhost:5004/card/post";
+        const api = "http://18.222.255.205:5004/card/post";
         const postCard = await axios.post(api, {
             temperature: weatherData.temperature,
              weather: weatherData.weather,
@@ -38,7 +39,6 @@ const saveCard = async () => {
         setCollectedCard([...collectedCard,postCard.data]);
         setWeather("")
         setValue("")
-        console.log(postCard)
     }
     catch(err){
         console.log(err)
@@ -47,7 +47,7 @@ const saveCard = async () => {
 }
 const onSearch = async (weather) => {
     try{ 
-        const api = "http://localhost:5004/card/show";
+        const api = "http://18.222.255.205:5004/card/show";
     const findCard = await axios.post(api, {
         cityName: value
     })
@@ -60,7 +60,6 @@ const onSearch = async (weather) => {
         city: findCard.data.city,
         image: findCard.data.image
     })
-    console.log(findCard.data)
     }
     catch(err){
         console.log(err)
@@ -78,27 +77,27 @@ const handleClick = async(evn) => {
         }
     evn.preventDefault();
 }
-useEffect(() => {
-    const facthCards = async () => {
-        try{
-        const api = "http://localhost:5004/card"
-        const cards = await axios.get(api);
-        console.log(cards);
-        }
-        catch(err){
-            console.log(err)
-        }
-    }
-    facthCards();
-},[])
+// useEffect(() => {
+//     const facthCards = async () => {
+//         try{
+//         const api = "http://18.222.255.205:5004/card"
+//         const cards = await axios.get(api);
+//         console.log(cards);
+//         }
+//         catch(err){
+//             console.log(err)
+//         }
+//     }
+//     facthCards();
+// },[])
 
     return <div>
    <section id="search">
    <div>
-        <h1>Search Your City Weather Here.</h1>
+        <Typography color="gray" variant="h5">Search Your City Weather Here.</Typography>
         <form onClick={handleClick}>
             <div className="searchArea">
-            <h3>City: {weather}</h3>
+            <Typography color="gray" variant="h6"> City: {weather}</Typography>
              <input onChange={handleChange} className="search-box" type="text" placeholder="Search city or country"  value={value} ></input>
             <input className="search-btn" type="submit" value="check" ></input>
             </div>

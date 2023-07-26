@@ -26,7 +26,7 @@ function Search(props){
     }
 const saveCard = async () => {
     try{
-        const api = "http://18.222.255.205:5004/card/post";
+        const api = "http://3.26.208.5:5004/card/post";
         const postCard = await axios.post(api, {
             temperature: weatherData.temperature,
              weather: weatherData.weather,
@@ -47,7 +47,7 @@ const saveCard = async () => {
 }
 const onSearch = async (weather) => {
     try{ 
-        const api = "http://18.222.255.205:5004/card/show";
+        const api = "http://3.26.208.5:5004/card/show";
     const findCard = await axios.post(api, {
         cityName: value
     })

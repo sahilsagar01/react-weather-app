@@ -33,7 +33,7 @@ const handledelete = async (mongoId,id) => {
 useEffect(() => {
   const fetchInfo = async () => {
       try {
-        const api = "http://3.26.208.5:5004/card";
+        const api = "https://react-weather-server.onrender.com/card";
         const weatherInfo = await axios.get(api);
         /* console.log("file: createcard.js:59  weatherInfo: ", weatherInfo.data) */
        setCollectedCard(weatherInfo.data)

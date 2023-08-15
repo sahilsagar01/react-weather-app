@@ -14,10 +14,10 @@ export default function WeatherCard(props) {
 
 const handleDelete = async() => {
  try{
-  const weatherData = await axios.get("http://3.26.208.5:5004/card");
+  const weatherData = await axios.get("https://react-weather-server.onrender.com/card");
   const mongoId = weatherData.data[props.id]._id
   props.ondelete(mongoId,props.id)
-  const DeletedCard = await axios.delete(`http://3.26.208.5:5004/card/delete/${mongoId}`)
+  const DeletedCard = await axios.delete(`https://react-weather-server.onrender.com/card/delete/${mongoId}`)
  }
  catch(error){
   console.log(error)
